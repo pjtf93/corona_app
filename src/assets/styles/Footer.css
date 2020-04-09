@@ -1,0 +1,16 @@
+.footer {
+  grid-area: footer;
+  display: flex;
+  /* outline: 2px solid black; */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: #323232;
+}
+
+.footer a,
+p {
+  margin: 5px;
+  font-size: 15px;
+  color: #ffac41;
+}

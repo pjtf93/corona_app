@@ -1,0 +1,16 @@
+body {
+  margin: 0px;
+  font-family: arial;
+}
+
+.App {
+  display: grid;
+  grid-template: 70px 1fr 50px / 250px 1fr 1fr;
+  /* grid-gap: 10px; */
+  height: 100vh;
+  grid-template-areas:
+    'header header header'
+    'left content  right'
+    'footer footer  footer';
+  background: #000000;
+}

@@ -1,0 +1,18 @@
+.side {
+  grid-area: left;
+  /* outline: 2px solid black; */
+  /* margin-left: 20px; */
+  display: grid;
+  grid-template: 1fr / 1fr;
+  color: #ffac41;
+  background-color: #000000;
+  text-align: center;
+}
+.side__container {
+  background-color: #000000;
+  border-radius: 15px;
+  margin: 20px;
+  display: grid;
+  font-size: 16px;
+  font-weight: bold;
+}
