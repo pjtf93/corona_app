@@ -8,7 +8,8 @@ import React, { useState, useEffect } from 'react';
   usePagination,
 } from 'react-table'; */
 
-import '../assets/styles/Content.css';
+// import '../assets/styles/Content.css';
+import Table from 'react-bootstrap/Table';
 
 const Content = () => {
   const [list, setList] = useState({
@@ -48,22 +49,18 @@ const Content = () => {
   };
 
   return (
-    <div className='content'>
-      <div className='content__table'>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Paises</th>
-              <th>Total Contagiados</th>
-              <th>Total Fallecidos</th>
-              <th>Total Recuperados</th>
-            </tr>
-          </thead>
-          <tbody>{renderTable()}</tbody>
-        </table>
-      </div>
-    </div>
+    <Table striped bordered hover size='sm'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Paises</th>
+          <th>Total Contagiados</th>
+          <th>Total Fallecidos</th>
+          <th>Total Recuperados</th>
+        </tr>
+      </thead>
+      <tbody>{renderTable()}</tbody>
+    </Table>
   );
 };
 
