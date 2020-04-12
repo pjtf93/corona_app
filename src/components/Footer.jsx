@@ -7,8 +7,8 @@ import '../assets/styles/Footer.css';
 
 const Footer = () => {
   return (
-    <Container id='footer' className='Container'>
-      <Row class='row text-center'>
+    <Container fluid id='footer' className='Container'>
+      <Row className='row text-center'>
         <Col>
           <p>By Pablo Tovar</p>
         </Col>
@@ -16,7 +16,7 @@ const Footer = () => {
           <a href='https://twitter.com/PabloTovar_'>Twitter</a>
         </Col>
         <Col>
-          <a href=''>Github</a>
+          <a href='https://github.com/pjtf93'>Github</a>
         </Col>
       </Row>
     </Container>

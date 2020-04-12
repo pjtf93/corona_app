@@ -15,17 +15,20 @@ const App = () => {
   return (
     <div>
       {/* Header */}
-      <Container fluid>
+      <Container fluid='xs'>
         <Header />
       </Container>
       {/* Content */}
       <Container fluid>
         <Row>
-          <Col>
+          <Col xs={4}>
             <Side />
           </Col>
-          <Col>
+          <Col md='auto'>
             <Content />
+          </Col>
+          <Col xs={3}>
+            <Side />
           </Col>
         </Row>
       </Container>

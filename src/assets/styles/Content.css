@@ -6,8 +6,12 @@
   color: white;
   background-color: #000000;
   padding: 20px;
-  overflow: scroll;
+  overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.table {
+  overflow-y: scroll;
 }
 
 .content__table {

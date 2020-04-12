@@ -26,33 +26,33 @@ const Side = () => {
   return (
     <Container>
       <Row>
-        <Col className='mt-3 mb-3'>
-          <Card style={{ width: '14rem', height: '7rem' }}>
+        <Col className='mt-5 mb-3 '>
+          <Card bg={'primary'} style={{ width: '14rem', height: '7rem' }}>
+            <Card.Header>Total Contagiados:</Card.Header>
             <Card.Body>
-              <Card.Title>Total Contagiados:</Card.Title>
-              <Card.Text>{`${covid.confirmed}`}</Card.Text>
+              <Card.Title>{`${covid.confirmed}`}</Card.Title>
             </Card.Body>
           </Card>
         </Col>
       </Row>
 
       <Row>
-        <Col className='mt-3 mb-3'>
-          <Card style={{ width: '14rem', height: '7rem' }}>
+        <Col className='mt-5 mb-3'>
+          <Card bg={'danger'} style={{ width: '14rem', height: '7rem' }}>
+            <Card.Header>Total Fallecidos:</Card.Header>
             <Card.Body>
-              <Card.Title>Total Fallecidos:</Card.Title>
-              <Card.Text>{`${covid.deaths}`}</Card.Text>
+              <Card.Title>{`${covid.deaths}`}</Card.Title>
             </Card.Body>
           </Card>
         </Col>
       </Row>
 
       <Row>
-        <Col className='mt-3 mb-3'>
-          <Card style={{ width: '14rem', height: '7rem' }}>
+        <Col className='mt-5 mb-3'>
+          <Card bg={'success'} style={{ width: '14rem', height: '7rem' }}>
+            <Card.Header>Total Recuperados:</Card.Header>
             <Card.Body>
-              <Card.Title>Total Recuperados:</Card.Title>
-              <Card.Text>{`${covid.recovered}`}</Card.Text>
+              <Card.Title>{`${covid.recovered}`}</Card.Title>
             </Card.Body>
           </Card>
         </Col>
