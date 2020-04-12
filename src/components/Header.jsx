@@ -8,7 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const Header = () => {
   return (
-    <Navbar>
+    <Navbar bg='dark' variant='dark'>
       <Navbar.Text>Sitio de informacion del Covid19</Navbar.Text>
     </Navbar>
   );

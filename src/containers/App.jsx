@@ -13,17 +13,13 @@ import Col from 'react-bootstrap/Col';
 
 const App = () => {
   return (
-    <div fluid>
+    <div>
       {/* Header */}
-      <Container>
-        <Row>
-          <Col>
-            <Header />
-          </Col>
-        </Row>
+      <Container fluid>
+        <Header />
       </Container>
       {/* Content */}
-      <Container>
+      <Container fluid>
         <Row>
           <Col>
             <Side />
