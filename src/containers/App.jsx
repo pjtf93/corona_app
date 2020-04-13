@@ -21,15 +21,13 @@ const App = () => {
       {/* Content */}
       <Container fluid>
         <Row>
-          <Col xs={4}>
+          <Col>
             <Side />
           </Col>
-          <Col md='auto'>
+          <Col>
             <Content />
           </Col>
-          <Col xs={3}>
-            <Side />
-          </Col>
+          <Col></Col>
         </Row>
       </Container>
       {/* Footer */}

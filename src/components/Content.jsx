@@ -1,26 +1,18 @@
 import React, { useState, useEffect } from 'react';
-/* import {
-  useTable,
-  useGroupBy,
-  useFilters,
-  useSortBy,
-  useExpanded,
-  usePagination,
-} from 'react-table'; */
+import DataTable from 'react-data-table-component';
 
 // import '../assets/styles/Content.css';
-import Table from 'react-bootstrap/Table';
 
 const Content = () => {
   const [list, setList] = useState({
     locations: [
       {
-        id: 0,
-        country: 'Afghanistan',
+        id: [],
+        country: [],
         latest: {
-          confirmed: 423,
-          deaths: 14,
-          recovered: 0,
+          confirmed: [],
+          deaths: [],
+          recovered: [],
         },
       },
     ],
@@ -32,35 +24,47 @@ const Content = () => {
       .then((data) => setList(data));
   }, []);
 
-  // console.log(list.locations[0].country);
+  const dataApp = list.locations.map(({ id, country, latest }) => {
+    return { id, country, latest };
+  });
 
-  const renderTable = () => {
-    return list.locations.map(({ id, country, latest }) => {
-      return (
-        <tr>
-          <td>{id}</td>
-          <td>{country}</td>
-          <td>{latest['confirmed']}</td>
-          <td>{latest['deaths']}</td>
-          <td>{latest['recovered']}</td>
-        </tr>
-      );
-    });
-  };
+  const columns = [
+    {
+      name: 'ID',
+      selector: 'id',
+    },
+    {
+      name: 'Pais',
+      selector: 'country',
+    },
+    {
+      name: 'Total Contagiados',
+      selector: 'latest.confirmed',
+      sortable: true,
+    },
+    {
+      name: 'Total Fallecidos',
+      selector: 'latest.deaths',
+      sortable: true,
+    },
+    {
+      name: 'Total Recuperados',
+      selector: 'latest.recovered',
+      sortable: true,
+    },
+  ];
 
   return (
-    <Table striped bordered hover size='sm'>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Paises</th>
-          <th>Total Contagiados</th>
-          <th>Total Fallecidos</th>
-          <th>Total Recuperados</th>
-        </tr>
-      </thead>
-      <tbody>{renderTable()}</tbody>
-    </Table>
+    <DataTable
+      title='Confirmed Cases and Deaths by Country'
+      columns={columns}
+      data={dataApp}
+      defaultSortField='latest.confirmed'
+      defaultSortAsc={false}
+      striped
+      highlightOnHover
+      pagination={true}
+    />
   );
 };
 
