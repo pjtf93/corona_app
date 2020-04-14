@@ -1,16 +1,12 @@
 import React from 'react';
 
-import Container from 'react-bootstrap/Container';
-import { Row } from 'react-bootstrap';
-import Col from 'react-bootstrap/Col';
-import Navbar from 'react-bootstrap/Navbar';
-// import '../assets/styles/Header.css';
+import '../assets/styles/Header.css';
 
 const Header = () => {
   return (
-    <Navbar bg='light' variant='light'>
-      <Navbar.Text>Sitio de informacion del Covid19</Navbar.Text>
-    </Navbar>
+    <div className='header flex  items-center shadow-inner bg-gray-200 p-2  text-left align-middle text-lg '>
+      <h1 className='text-gray-800 pl-16'>Covid19 Tracker</h1>
+    </div>
   );
 };
 

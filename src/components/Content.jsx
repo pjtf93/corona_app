@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import DataTable from 'react-data-table-component';
+import DataTable, { createTheme } from 'react-data-table-component';
 
-// import '../assets/styles/Content.css';
+import '../assets/styles/Content.css';
 
 const Content = () => {
   const [list, setList] = useState({
@@ -54,17 +54,43 @@ const Content = () => {
     },
   ];
 
+  createTheme('solarized', {
+    text: {
+      primary: '#268bd2',
+      secondary: '#2aa198',
+    },
+    background: {
+      default: '#002b36',
+    },
+    context: {
+      background: '#cb4b16',
+      text: '#FFFFFF',
+    },
+    divider: {
+      default: '#073642',
+    },
+    action: {
+      button: 'rgba(0,0,0,.54)',
+      hover: 'rgba(0,0,0,.08)',
+      disabled: 'rgba(0,0,0,.12)',
+    },
+  });
+
   return (
-    <DataTable
-      title='Confirmed Cases and Deaths by Country'
-      columns={columns}
-      data={dataApp}
-      defaultSortField='latest.confirmed'
-      defaultSortAsc={false}
-      striped
-      highlightOnHover
-      pagination={true}
-    />
+    <div className='content mr-5'>
+      <DataTable
+        title='Confirmed Cases and Deaths by Country'
+        theme='solarized'
+        columns={columns}
+        data={dataApp}
+        defaultSortField='latest.confirmed'
+        defaultSortAsc={false}
+        striped
+        highlightOnHover
+        pagination={true}
+        paginationRowsPerPageOptions={[10]}
+      />
+    </div>
   );
 };
 

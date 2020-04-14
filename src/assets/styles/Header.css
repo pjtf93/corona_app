@@ -1,14 +1,15 @@
 .header {
   grid-area: header;
-  color: #ffac41;
-  margin-left: 0px;
-  background-color: #323232;
-  padding-left: 20px;
-  justify-content: center;
-  align-content: center;
+  /* color: #ffac41; */
+  /* margin-left: 0px; */
+  /* background-color: #323232; */
+  /* padding-left: 20px; */
+  /* justify-content: center;
+  align-content: center; */
 }
 
-.header-item {
+/* .header-item {
   margin-left: 30px;
   align-items: center;
 }
+  */

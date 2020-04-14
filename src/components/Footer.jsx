@@ -1,25 +1,18 @@
 import React from 'react';
 
-import Container from 'react-bootstrap/Container';
-import { Row } from 'react-bootstrap';
-import Col from 'react-bootstrap/Col';
 import '../assets/styles/Footer.css';
 
 const Footer = () => {
   return (
-    <Container fluid id='footer' className='Container'>
-      <Row className='row text-center'>
-        <Col>
-          <p>By Pablo Tovar</p>
-        </Col>
-        <Col>
-          <a href='https://twitter.com/PabloTovar_'>Twitter</a>
-        </Col>
-        <Col>
-          <a href='https://github.com/pjtf93'>Github</a>
-        </Col>
-      </Row>
-    </Container>
+    <div className='footer flex justify-center shadow-inner bg-gray-200 p-2  flex align-middle text-sm text-gray-800	'>
+      <p className='p-2'>By Pablo Tovar</p>
+      <a className='p-2' href='https://twitter.com/PabloTovar_'>
+        Twitter
+      </a>
+      <a className='p-2' href='https://github.com/pjtf93'>
+        Github
+      </a>
+    </div>
   );
 };
 

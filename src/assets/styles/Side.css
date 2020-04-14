@@ -2,17 +2,15 @@
   grid-area: left;
   /* outline: 2px solid black; */
   /* margin-left: 20px; */
-  /* display: grid;
-  grid-template: 1fr / 1fr; */
-  color: #ffac41;
-  background-color: #000000;
-  text-align: center;
+  grid-template: 1fr / 1fr;
+  /* color: #ffac41; */
+  /* text-align: center; */
 }
-.side__container {
-  background-color: #000000;
-  border-radius: 15px;
+/* .side__box {
+  border-radius: 10px;
+  border: 1px solid blue;
   margin: 20px;
   display: grid;
-  font-size: 16px;
+  font-size: 0.6rem;
   font-weight: bold;
-}
+} */
