@@ -5,51 +5,77 @@ import '../assets/styles/Content.css';
 
 const Content = () => {
   const [list, setList] = useState({
-    locations: [
+    response: [
       {
-        id: [],
         country: [],
-        latest: {
-          confirmed: [],
-          deaths: [],
+        cases: {
+          new: [],
+          active: [],
+          critical: [],
           recovered: [],
+          total: [],
+        },
+        deaths: {
+          new: [],
+          total: [],
         },
       },
     ],
   });
 
   useEffect(() => {
-    fetch('https://coronavirus-tracker-api.herokuapp.com/v2/locations')
+    fetch('https://covid-193.p.rapidapi.com/statistics', {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-host': 'covid-193.p.rapidapi.com',
+        'x-rapidapi-key': '56b38ea26cmsh355ccb8b1201dbap1067c9jsn3670d0772e70',
+      },
+    })
       .then((response) => response.json())
-      .then((data) => setList(data));
+      .then((data) => setList(data))
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
-  const dataApp = list.locations.map(({ id, country, latest }) => {
-    return { id, country, latest };
+  const dataApp = list.response.map(({ country, cases, deaths }) => {
+    return { country, cases, deaths };
   });
 
   const columns = [
     {
-      name: 'ID',
-      selector: 'id',
-    },
-    {
       name: 'Pais',
       selector: 'country',
+      sortable: true,
     },
     {
       name: 'Total Contagiados',
-      selector: 'latest.confirmed',
+      selector: 'cases.total',
+      sortable: true,
+    },
+    {
+      name: 'Casos Nuevos',
+      selector: 'cases.new',
       sortable: true,
     },
     {
       name: 'Total Fallecidos',
-      selector: 'latest.deaths',
+      selector: 'deaths.total',
+      sortable: true,
+    },
+    {
+      name: 'Nuevos Fallecidos',
+      selector: 'deaths.new',
+      sortable: true,
+    },
+    {
+      name: 'Casos Criticos',
+      selector: 'cases.critical',
       sortable: true,
     },
     {
       name: 'Total Recuperados',
-      selector: 'latest.recovered',
+      selector: 'cases.recovered',
       sortable: true,
     },
   ];
@@ -60,7 +86,7 @@ const Content = () => {
       secondary: '#2aa198',
     },
     background: {
-      default: '#002b36',
+      default: '##edf2f7',
     },
     context: {
       background: '#cb4b16',
@@ -77,13 +103,13 @@ const Content = () => {
   });
 
   return (
-    <div className='content mr-5'>
+    <div className='content mr-5 flex items-center justify-center '>
       <DataTable
         title='Confirmed Cases and Deaths by Country'
         theme='solarized'
         columns={columns}
         data={dataApp}
-        defaultSortField='latest.confirmed'
+        defaultSortField='cases.total'
         defaultSortAsc={false}
         striped
         highlightOnHover
