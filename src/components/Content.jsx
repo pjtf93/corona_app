@@ -42,6 +42,8 @@ const Content = () => {
     return { country, cases, deaths };
   });
 
+  console.log(Object.keys(list['response'][0]));
+
   const columns = [
     {
       name: 'Pais',
