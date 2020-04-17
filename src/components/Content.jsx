@@ -3,6 +3,10 @@ import DataTable, { createTheme } from 'react-data-table-component';
 
 import '../assets/styles/Content.css';
 
+function formatColumn(row, parent, child) {
+  return new Intl.NumberFormat().format(row[parent][child]);
+}
+
 const Content = () => {
   const [list, setList] = useState({
     response: [
@@ -39,6 +43,14 @@ const Content = () => {
   }, []);
 
   const dataApp = list.response.map(({ country, cases, deaths }) => {
+    Object.keys(cases).forEach((type) => {
+      const value = cases[type] ? parseFloat(cases[type]) : 0;
+      cases[type] = value;
+    });
+    Object.keys(deaths).forEach((type) => {
+      const value = deaths[type] ? parseFloat(deaths[type]) : 0;
+      deaths[type] = value;
+    });
     return { country, cases, deaths };
   });
 
@@ -54,31 +66,37 @@ const Content = () => {
       name: 'Total Contagiados',
       selector: 'cases.total',
       sortable: true,
+      format: (row) => formatColumn(row, 'cases', 'total'),
     },
     {
       name: 'Casos Nuevos',
       selector: 'cases.new',
       sortable: true,
+      format: (row) => formatColumn(row, 'cases', 'new'),
     },
     {
       name: 'Total Fallecidos',
       selector: 'deaths.total',
       sortable: true,
+      format: (row) => formatColumn(row, 'deaths', 'total'),
     },
     {
       name: 'Nuevos Fallecidos',
       selector: 'deaths.new',
       sortable: true,
+      format: (row) => formatColumn(row, 'deaths', 'new'),
     },
     {
       name: 'Casos Criticos',
       selector: 'cases.critical',
       sortable: true,
+      format: (row) => formatColumn(row, 'cases', 'critical'),
     },
     {
       name: 'Total Recuperados',
       selector: 'cases.recovered',
       sortable: true,
+      format: (row) => formatColumn(row, 'cases', 'recovered'),
     },
   ];
 
