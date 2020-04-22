@@ -32,29 +32,25 @@ const Side = () => {
       });
   }, []);
 
-  /*  const decNumb = covid.map(({ cases, deaths }) => {
-    return { cases, deaths };
-  }); */
-
   // console.log(new Intl.NumberFormat().format(covid));
   // {new Intl.NumberFormat('en').format(covid.cases['new'])}
 
   return (
-    <div className='side  m-3 flex flex-col items-center justify-center text-center shadow-inner'>
+    <div className='side  bg-white flex flex-col items-center justify-center text-center ml-8 border border-gray-200'>
       <h4 className='text-3xl'>Datos Globales</h4>
       <div>
         <h1 className='text-xl pt-6'>Total Contagiados:</h1>
         <h1 className='text-4xl pt-2 text-blue-700'>
           {new Intl.NumberFormat('en').format(covid.cases['total'])}
         </h1>
-        <h6>{new Intl.NumberFormat('en').format(covid.cases['new'])} </h6>
+        <h6>{`+${new Intl.NumberFormat('en').format(covid.cases['new'])}`} </h6>
       </div>
       <div>
         <h1 className='text-xl pt-6'>Total Fallecidos:</h1>
         <h1 className='text-4xl pt-2 text-red-700'>
           {new Intl.NumberFormat('en').format(covid.deaths['total'])}
         </h1>
-        <h6> {new Intl.NumberFormat('en').format(covid.deaths['new'])}</h6>
+        <h6>{`+${new Intl.NumberFormat('en').format(covid.deaths['new'])}`}</h6>
       </div>
 
       <div>

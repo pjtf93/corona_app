@@ -6,7 +6,7 @@ body {
 .App {
   display: grid;
   grid-template: 70px 1fr / 250px 1fr;
-  grid-gap: 10px;
+  grid-gap: 15px;
   height: 100vh;
   grid-template-areas:
     'header header'

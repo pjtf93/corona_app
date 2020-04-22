@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import DataTable, { createTheme } from 'react-data-table-component';
+import React, { useMemo, useState, useEffect } from 'react';
+import Table from './Table';
+import { Link } from 'react-router-dom';
 
 import '../assets/styles/Content.css';
 
-function formatColumn(row, parent, child) {
-  return new Intl.NumberFormat().format(row[parent][child]);
-}
+// function formatColumn(row, parent, child) {
+//   return new Intl.NumberFormat().format(row[parent][child]);
+// }
 
 const Content = () => {
   const [list, setList] = useState({
@@ -13,15 +14,18 @@ const Content = () => {
       {
         country: [],
         cases: {
-          new: [],
-          active: [],
-          critical: [],
-          recovered: [],
-          total: [],
+          new: [0],
+          active: [0],
+          critical: [0],
+          recovered: [0],
+          total: [0],
         },
         deaths: {
-          new: [],
-          total: [],
+          new: [0],
+          total: [0],
+        },
+        tests: {
+          total: [0],
         },
       },
     ],
@@ -42,7 +46,7 @@ const Content = () => {
       });
   }, []);
 
-  const dataApp = list.response.map(({ country, cases, deaths }) => {
+  const dataApp = list.response.map(({ country, cases, deaths, tests }) => {
     Object.keys(cases).forEach((type) => {
       const value = cases[type] ? parseFloat(cases[type]) : 0;
       cases[type] = value;
@@ -51,91 +55,63 @@ const Content = () => {
       const value = deaths[type] ? parseFloat(deaths[type]) : 0;
       deaths[type] = value;
     });
-    return { country, cases, deaths };
+    return { country, cases, deaths, tests };
   });
 
   console.log(Object.keys(list['response'][0]));
 
-  const columns = [
-    {
-      name: 'Pais',
-      selector: 'country',
-      sortable: true,
-    },
-    {
-      name: 'Total Contagiados',
-      selector: 'cases.total',
-      sortable: true,
-      format: (row) => formatColumn(row, 'cases', 'total'),
-    },
-    {
-      name: 'Casos Nuevos',
-      selector: 'cases.new',
-      sortable: true,
-      format: (row) => formatColumn(row, 'cases', 'new'),
-    },
-    {
-      name: 'Total Fallecidos',
-      selector: 'deaths.total',
-      sortable: true,
-      format: (row) => formatColumn(row, 'deaths', 'total'),
-    },
-    {
-      name: 'Nuevos Fallecidos',
-      selector: 'deaths.new',
-      sortable: true,
-      format: (row) => formatColumn(row, 'deaths', 'new'),
-    },
-    {
-      name: 'Casos Criticos',
-      selector: 'cases.critical',
-      sortable: true,
-      format: (row) => formatColumn(row, 'cases', 'critical'),
-    },
-    {
-      name: 'Total Recuperados',
-      selector: 'cases.recovered',
-      sortable: true,
-      format: (row) => formatColumn(row, 'cases', 'recovered'),
-    },
-  ];
-
-  createTheme('solarized', {
-    text: {
-      primary: '#268bd2',
-      secondary: '#2aa198',
-    },
-    background: {
-      default: '##edf2f7',
-    },
-    context: {
-      background: '#cb4b16',
-      text: '#FFFFFF',
-    },
-    divider: {
-      default: '#073642',
-    },
-    action: {
-      button: 'rgba(0,0,0,.54)',
-      hover: 'rgba(0,0,0,.08)',
-      disabled: 'rgba(0,0,0,.12)',
-    },
-  });
-
+  const columns = useMemo(
+    () => [
+      {
+        // first group - TV Show
+        Header: 'COVID19',
+        // First group columns
+        columns: [
+          {
+            Header: 'Pais',
+            accessor: 'country',
+            Cell: ({ row }) => (
+              <Link to={{ pathname: `/countries/${row.original.country}` }}>
+                {row.original.country}
+              </Link>
+            ),
+          },
+          {
+            Header: 'Total Contagiados',
+            accessor: 'cases.total',
+          },
+          {
+            Header: 'Casos Nuevos',
+            accessor: 'cases.new',
+          },
+          {
+            Header: 'Total Fallecidos',
+            accessor: 'deaths.total',
+          },
+          {
+            Header: 'Nuevos Fallecidos',
+            accessor: 'deaths.new',
+          },
+          {
+            Header: 'Casos Criticos',
+            accessor: 'cases.critical',
+          },
+          {
+            Header: 'Total Recuperados',
+            accessor: 'cases.recovered',
+          },
+          {
+            Header: 'Pruebas Realizadas',
+            accessor: 'tests.total',
+          },
+        ],
+      },
+    ],
+    []
+  );
   return (
-    <div className='content mr-5 flex items-center justify-center '>
-      <DataTable
-        title='Confirmed Cases and Deaths by Country'
-        theme='solarized'
-        columns={columns}
-        data={dataApp}
-        defaultSortField='cases.total'
-        defaultSortAsc={false}
-        striped
-        highlightOnHover
-        pagination={true}
-        paginationRowsPerPageOptions={[10]}
-      />
+    <div className='content flex bg-white flex flex-col w-8/12 justify-center    '>
+      <Table columns={columns} data={dataApp} />
     </div>
   );
 };

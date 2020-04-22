@@ -4,7 +4,7 @@ import '../assets/styles/Footer.css';
 
 const Footer = () => {
   return (
-    <div className='footer flex justify-center shadow-inner bg-gray-200 p-2  flex align-middle text-sm text-gray-800	'>
+    <div className='footer flex justify-center border border-gray-200 bg-white p-4 align-middle text-sm text-gray-800	'>
       <p className='p-2'>By Pablo Tovar</p>
       <a className='p-2' href='https://twitter.com/PabloTovar_'>
         Twitter
