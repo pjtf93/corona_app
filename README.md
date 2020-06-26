@@ -1,3 +1,7 @@
+This project is a simple COVID-19 tracker using React and Tailwind CSS
+
+https://corona-app-vert.vercel.app/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
